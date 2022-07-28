@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote for {{ company['name'] }}
+{% endblock %}
+
+{% block main %}
+<p>Quote for {{ company }}</p>
+<h3>
+Price per stock: {{ price | usd }}
+</h3>
+<p><a href="/quote">go back</a></p>
+{% endblock %}

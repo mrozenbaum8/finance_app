@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+        {% for key in portfolio[0].keys() %}
+            <th>{{ key }}</th>
+        {% endfor %}
+            <th>total</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for portfolio_values in portfolio %}
+        <tr>
+            {% for value in portfolio_values.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            <td>{{ portfolio_values["company_shares"] * portfolio_values["price"] }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="fw-bold text-end" colspan="4">Shares</td>
+            <td class="text-end">{{ portfolio_total | usd }}</td>
+        </tr>
+        <tr>
+            <td class="fw-bold text-end" colspan="4">Cash</td>
+            <td class="text-end">{{ cash | usd }}</td>
+        </tr>
+        <tr>
+            <td class="fw-bold text-end" colspan="4">Total</td>
+            <td class="text-end">{{ grand_total | usd }}</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+{% endblock %}

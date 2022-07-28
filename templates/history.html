@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+        {% for key in portfolio[0].keys() %}
+            <th>{{ key }}</th>
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for portfolio_values in portfolio %}
+        <tr>
+            {% for value in portfolio_values.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}
